@@ -87,17 +87,24 @@ anyNA(grades$grade)
 ```{r}
 grades%>%
   group_by(id, group)%>%
-  summarise(nb_grades = n())
+  summarise(nb_grades = n())%>%
+  slice(1:5)
 ```
  
 
 ### Question 9:
 ```{r}
+grades %>%
+  filter(course == "Martial Arts and Self-Defense")%>%
+  group_by(id, group)%>%
+  summarise(nb_grade_martial = n())
+```
+
+```{r}
 grades_martial_art<-grades %>%
   filter(course == "Martial Arts and Self-Defense")%>%
   group_by(id, group)%>%
-  summarise(nb_grade_martial = n())%>%
-  print(grades_martial_art)
+  summarise(nb_grade_martial = n())
 ```
 
 
@@ -125,14 +132,46 @@ grades_martial_art%>%
 ```{r}
 library (tidyr)
 ```
+```{r}
+grades%>%
+  group_by(id, group, course)%>%
+  summarise(average = mean(grade))
+```
 
 ```{r}
 grades_12<-grades%>%
   group_by(id, group, course)%>%
-  summarise(average = n())%>%
-  print(grades_12)
+  summarise(average = mean(grade)) 
 ```
+
 ```{r}
-grades_12%>%
+ grades_12%>%
   pivot_wider(names_from = course, values_from = average)
 ```
+
+
+```{r}
+grades_12_wider<-grades_12%>%
+  pivot_wider(names_from = course, values_from = average) 
+```
+
+### Question 13: 
+```{r}
+grades_12_wider%>%
+  select(`Music and Dance`, `Politics and Diplomacy`)%>%
+  ggplot(aes(x= `Music and Dance`, y= `Politics and Diplomacy`))+
+  geom_col()
+```
+
+### Question 14: 
+```{r}
+grades_12_wider%>%
+  summarise(cor(`Martial Arts and Self-Defense`, `Astrology and Astrology`))
+```
+
+
+
+
+
+
+
