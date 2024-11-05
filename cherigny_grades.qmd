@@ -78,4 +78,20 @@ grades%>%
   ggplot(aes (x = module, y = average, fill =module))+
   geom_col()
 ```
+# 3-Attendance analysis
+### Question 8: 
+Vérification pour savoir si il y a des valeurs manquantes 
+```{r}
+anyNA(grades$grade)
+```
+```{r}
+grades%>%
+  group_by(id, group)%>%
+  summarise(nb_grades = n())
+```
+```{r}
+nb_grades_per_student<- grades%>%
+  group_by(id, group)%>%
+  summarise(nb_grades = n())
+```
 
