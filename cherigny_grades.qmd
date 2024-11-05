@@ -4,3 +4,17 @@ author: "Adèle Cherigny"
 format: html
 ---
 
+# 1-Introduction
+## 1.1- Study organisation
+## 1.2- Data set
+### Question 1: Load the data set
+Chargement des packages nécessaires: 
+```{r}
+library(readr)
+```
+
+Chargement de la base de données
+```{r}
+grades <- read_csv("/Users/adelecherigny/Desktop/master/S1/data management/grades-lab/grades (2).csv")
+```
+
