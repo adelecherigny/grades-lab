@@ -40,5 +40,33 @@ grades%>%
   slice_sample(n =5)%>%
   knitr::kable()
 ```
+### Question 5:
+chargement des packages nécessaires:
+```{r}
+library(ggplot2)
+```
+
+```{r}
+grades%>%
+  select(id, group)%>%
+  distinct(id, .keep_all = TRUE)%>%
+  mutate(group = factor(group)) %>%
+  ggplot(aes(x= group))+
+  geom_bar(show.legend = TRUE)+
+  labs(x = "Groups", y = "Number of students")
+```
+ 
+### QUestion 6: 
+```{r}
+grades %>%
+  group_by(group, course)%>%
+  filter(course== "Architecture and Sculpture")%>%
+  summarise(average =mean(grade))%>%
+  select (-course)%>% 
+  mutate(group = factor(group)) %>%
+  ggplot(aes(x= group, y= average, fill = group))+
+  geom_col()+
+  labs(x = "Groups", y = "average in Architecture and Sculpture")
+```
 
 
