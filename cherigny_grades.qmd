@@ -25,4 +25,11 @@ grades <- read_csv(here("grades.csv"))
 ### Question 2:
 The data set contains `r nrow(grades)` grades.
 
+### Question 3: 
+chargement des packages nécessaires:
+```{r}
+library(dplyr)
+```
+There `r nrow(grades %>% distinct(id))` students in the data set.
+
 
