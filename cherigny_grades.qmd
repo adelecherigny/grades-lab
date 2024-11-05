@@ -15,6 +15,8 @@ library(readr)
 
 Chargement de la base de données
 ```{r}
-grades <- read_csv("/Users/adelecherigny/Desktop/master/S1/data management/grades-lab/grades (2).csv")
+here::i_am("grades-lab.Rproj")
+library(here)
+grades <- read_csv(here("grades.csv"))
 ```
 
