@@ -69,4 +69,13 @@ grades %>%
   labs(x = "Groups", y = "average in Architecture and Sculpture")
 ```
 
+### Question 7:
+```{r}
+grades%>%
+  group_by(module)%>%
+  summarise(average= mean(grade))%>%
+  mutate(module = factor(module)) %>%
+  ggplot(aes (x = module, y = average, fill =module))+
+  geom_col()
+```
 
