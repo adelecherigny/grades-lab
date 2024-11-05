@@ -32,4 +32,13 @@ library(dplyr)
 ```
 There `r nrow(grades %>% distinct(id))` students in the data set.
 
+### Question 4: 
+```{r}
+grades%>%
+  select(id, group)%>%
+  distinct(id, .keep_all = TRUE)%>%
+  slice_sample(n =5)%>%
+  knitr::kable()
+```
+
 
