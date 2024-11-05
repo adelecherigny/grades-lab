@@ -97,6 +97,7 @@ grades_martial_art<-grades %>%
   filter(course == "Martial Arts and Self-Defense")%>%
   group_by(id, group)%>%
   summarise(nb_grade_martial = n())%>%
+  print(grades_martial_art)
 ```
 
 
@@ -109,7 +110,29 @@ grades_martial_art%>%
   geom_col()
 ```
 
+### Question 11:
+```{r}
+grades_martial_art%>%
+  group_by(group)
+```
 
 
 
+# 4-Grade analysis
+### Question 12: 
 
+
+```{r}
+library (tidyr)
+```
+
+```{r}
+grades_12<-grades%>%
+  group_by(id, group, course)%>%
+  summarise(average = n())%>%
+  print(grades_12)
+```
+```{r}
+grades_12%>%
+  pivot_wider(names_from = course, values_from = average)
+```
